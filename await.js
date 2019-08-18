@@ -23,6 +23,7 @@ function getn(guess){
 async function play(){
   try {
     let n = await Promise.all([getn("大"), getn("大")]);
+    // let n = await Promise.race([getn("大"), getn("大")]);
     console.log("好嗨哦 " + n);
   } catch (error) {
     console.log("输光了 " + error);
