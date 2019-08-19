@@ -29,15 +29,15 @@ function Promise(fn){
       then: function(successFn, failFn){
           successArray.push(successFn)
           failArray.push(failFn)
-          return undefined // 簡化
+          return undefined // 簡化只做一層 then
       }
   }
 }
 
-let andom_boolean = Math.random() >= 0.5
+let random_boolean = Math.random() >= 0.5
 let promise = new Promise((resolve,reject)=>{
   setTimeout(()=>{
-    if(andom_boolean){
+    if(random_boolean){
       resolve(101)
     }else{
       reject('x')
