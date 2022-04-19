@@ -34,9 +34,35 @@ C = f => a => b => f(b)(a)
 // C(K)(I)(M) === KI(I)(M) === M
 
 // 實現邏輯閘
-const TRUE = K
-const FALSE = KI
+const TRUE = a => b => a
+const FALSE = a => b => b
 const NOT = p => p(FALSE)(TRUE)
 const AND = p => q => p(q)(p)
 const OR = p => q => p(p)(q)
 const XOR = p => q => p(q)(NOT(q))
+
+const IFELSE = p => x => y => p(x)(y)
+
+TRUE    // a => b => a
+FALSE   // a => b => b
+
+NOT(TRUE)   // FALSE
+NOT(FALSE)  // TRUE
+
+AND(TRUE)(TRUE)     //TRUE
+AND(TRUE)(FALSE)    //FALSE
+AND(FALSE)(FALSE)   //FALSE
+AND(FALSE)(TRUE)    //FALSE
+
+OR(TRUE)(TRUE)      //TRUE
+OR(TRUE)(FALSE)     //TRUE
+OR(FALSE)(TRUE)     //TRUE
+OR(FALSE)(FALSE)    //FALSE
+
+XOR(TRUE)(TRUE)      //TRUE
+XOR(TRUE)(FALSE)     //FALSE
+XOR(FALSE)(TRUE)     //FALSE
+XOR(FALSE)(FALSE)    //TRUE
+
+IFELSE(TRUE)(TRUE)(FALSE)   //TRUE
+IFELSE(FALSE)(TRUE)(FALSE)  //FALSE
